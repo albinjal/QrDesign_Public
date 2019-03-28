@@ -1,0 +1,43 @@
+h2 {
+  text-align: center;
+  font-family: "Roboto";
+  font-weight: lighter;
+  font-size: 4vw;
+  color: grey;
+}
+
+p {
+  font-family: "Roboto";
+  font-weight: lighter;
+  font-size: 30px;
+}
+
+div.howitwork {
+  text-align: center;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+  margin-top: 100px;
+}
+
+div.left{
+  float: left;
+}
+
+div.right{
+  float: right;
+}
+
+.img {
+  width: 50%;
+}
+
+@media all and (max-width: 800px){
+  p {
+    font-size: 4vw;
+  }
+  h2 {
+    font-size: 6vw;
+  }
+}

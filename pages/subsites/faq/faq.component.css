@@ -1,0 +1,79 @@
+img {
+  width: 20vw;
+  margin: auto;
+  align-self: center;
+}
+
+button {
+  margin: 5px;
+}
+
+div.header {
+  margin-top: 100px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-content: center;
+  justify-content: center;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 200px;
+}
+
+div.text {
+  order: 1;
+}
+
+div.text h1 {
+  font-family: "Roboto Black";
+  font-size: 5vw;
+}
+
+div.text p {
+  font-family: "Roboto thin";
+  font-size: 2vw;
+}
+
+div.image {
+  order: 2;
+  width: 20vw;
+}
+
+div.body {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-bottom: 200px;
+}
+
+.cards {
+  width: 300px;
+  padding: 50px;
+  border-radius: 20px;
+}
+@media all and (max-width: 800px) {
+  div.header {
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-content: center;
+  }
+
+  div.text {
+    order: 2;
+    text-align: center;
+  }
+
+  div.text h1 {
+    font-size: 40px;
+  }
+
+  div.text p {
+    font-size: 25px;
+  }
+
+  div.image {
+    order: 1;
+    align-self: center;
+    flex-basis: 40%;
+  }
+}

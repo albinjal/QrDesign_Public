@@ -1,0 +1,64 @@
+
+
+div.body {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  text-align: center;
+}
+
+div.utantavla {
+  padding: 10vw;
+  width: 100vw;
+  height: 30vw;
+  background-attachment: fixed;
+  background-position: right;
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/artshop-b3081.appspot.com/o/siteimages%2Fwithout.png?alt=media&token=7f485db0-59ca-4052-af25-9dec6567e79e");
+}
+div.utantavla h1 {
+  font-family: "Roboto Black";
+  color: lightpink;
+  font-size: 6vw;
+}
+
+div.utantavla p {
+  font-family: "Roboto Thin";
+  font-size: 2vw;
+  color: white;
+}
+
+div.medtavla {
+  padding: 10vw;
+  width: 100vw;
+  height: 30vw;
+  background-attachment: fixed;
+  background-position: right;
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/artshop-b3081.appspot.com/o/siteimages%2Fwith.png?alt=media&token=10f3ecd4-5715-401f-b738-85ad4fa0045b");
+}
+
+div.medtavla h1 {
+  font-family: "Roboto Black";
+  color: lightpink;
+  font-size: 6vw;
+}
+
+div.medtavla p {
+  font-family: "Roboto Thin";
+  font-size: 2vw;
+  color: white;
+}
+
+div.infosection {
+  height: 800px;
+}
+
+@media all and (max-width: 1150px) {
+  div.medtavla {
+    background-attachment: scroll;
+    background-size: cover;
+  }
+  div.utantavla {
+    background-attachment: scroll;
+    background-size: cover;
+  }
+}

@@ -1,0 +1,125 @@
+
+<div class="container">
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h3>{{product.name}}</h3>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-progress-spinner mode="indeterminate" *ngIf="!imgload"></mat-progress-spinner>
+    <img *ngIf="img" mat-card-image [src]="img" (load)="imgloaded()">
+    <p>Total kostnad ex moms: {{currentprice * 0.01 * orderForm.value['quantity']}}kr</p>
+    <p>Vid köp av över 5 tavlor, kontakta oss för att ta del av minst 10% mängdrabbat</p>
+  </mat-card-content>
+</mat-card>
+
+
+</div>
+
+<div class="form">
+  <!-- <mat-card>
+    <mat-card-content>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac feugiat erat, eget volutpat lorem. Duis ullamcorper augue sit amet lectus aliquam lacinia.
+        Sed tincidunt turpis a nibh aliquam, sit amet porttitor ex porta. Proin eget erat neque. Morbi nec molestie ligula.
+        Maecenas ut sapien laoreet, accumsan lacus in, condimentum est. Nunc dignissim varius enim ultricies ultricies.
+        Vivamus hendrerit blandit dolor, vel finibus arcu imperdiet eget. Curabitur condimentum non nunc vitae imperdiet. Suspendisse imperdiet erat sed magna elementum hendrerit.
+        Quisque nunc massa, consequat eget bibendum id, dictum et sem. Proin varius magna in dolor tempor, non aliquam metus vehicula.</p>
+    </mat-card-content>
+
+  </mat-card> -->
+  <form [formGroup]="orderForm" (ngSubmit)="addToCart(orderForm)">
+  <mat-vertical-stepper linear="true">
+    <mat-step>
+      <ng-template matStepLabel>Välj QR-Kod</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-select [(value)]="qrtype">
+          <mat-option value="wifi">WiFi-Inloggning</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <form *ngIf="qrtype == 'wifi'" [formGroup]="wifiform">
+        <mat-form-field appearance="fill">
+          <mat-label>Nätverkets typ</mat-label>
+          <mat-select [formControl]="wifiform.controls['NetType']">
+            <mat-option value="WPA">WPA / WPA2</mat-option>
+            <!-- <mat-option value="WEP">WEP</mat-option> -->
+            <mat-option value="nopass">Öpppet Nätverk</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Nätverkets namn (SSID)</mat-label>
+          <input matInput [formControl]="wifiform.controls['SSID']">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill" *ngIf="wifiform.value['NetType'] !== 'nopass'">
+          <mat-label>Nätverkets lösenord</mat-label>
+          <input matInput [formControl]="wifiform.controls['Pass']">
+        </mat-form-field>
+      </form>
+      <h5>Test av kod</h5>
+      <qrcode [qrdata]="qrData" [usesvg]=false [size]="256" [level]="'H'"></qrcode>
+
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Välj Färg</ng-template>
+      <mat-form-field>
+        <mat-label>Färg</mat-label>
+        <mat-select [formControl]="orderForm.controls['color']">
+          <mat-option *ngFor="let color of product.colorarray"
+                      [value]="product.colors[color]['savedas']">{{product.colors[color]['name']}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="orderForm.value['color'] == 'custom' ">
+        <mat-label>Klicka för att välja färg</mat-label>
+        <input matInput type="color" [formControl]="orderForm.controls['customcolor']">
+      </mat-form-field>
+    </mat-step>
+      <br>
+    <mat-step>
+      <ng-template matStepLabel>Välj Typ och Storlek</ng-template>
+      <mat-form-field>
+        <mat-label>Typ</mat-label>
+        <mat-select [formControl]="orderForm.controls['type']">
+          <mat-option *ngFor="let type of product.typearray"
+                      [value]="product.types[type]['savedas']">{{product.types[type]['name']}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Storlek</mat-label>
+        <mat-select [formControl]="orderForm.controls['size']">
+          <mat-option *ngFor="let size of selectedtypearr" [value]="selectedtype[size]['savedas']">
+            {{selectedtype[size]['name']}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Slutför</ng-template>
+      <mat-form-field>
+        <mat-label>Antal</mat-label>
+        <input matInput type="number" [formControl]="orderForm.controls['quantity']">
+      </mat-form-field>
+          <p>Total kostnad ex moms: {{currentprice * 0.01 * orderForm.value['quantity']}}kr</p>
+          <button [disabled]="orderForm.invalid || wifiform.invalid" type="submit" color="primary"
+                  mat-raised-button>Lägg till i min Kundvagn
+          </button>
+        </mat-step>
+  </mat-vertical-stepper>
+</form>
+</div>
+<div style="clear: both"></div>
+
+
+
+
+
+
+
+
+
+
+

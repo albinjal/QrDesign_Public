@@ -1,0 +1,140 @@
+h1 {
+  padding-top: 50px;
+  font-size:50px;
+  font-family: "Roboto";
+  font-weight: bold;
+}
+
+h2 {
+  text-align: center;
+  font-family: "Roboto";
+  font-weight: bold;
+  margin: 3vw;
+}
+
+h3 {
+  font-family: "Roboto Slab";
+  color: lightpink;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+div.hero {
+  width: 100%;
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/artshop-b3081.appspot.com/o/siteimages%2Fwith.png?alt=media&token=10f3ecd4-5715-401f-b738-85ad4fa0045b");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 50vw;
+}
+
+.headertitle {
+  text-align: left;
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 8vw;
+  color: white;
+  margin-top: 0px;
+  margin-left: 3vw;
+  margin-bottom: 0px;
+  padding-top: 10vw;
+}
+
+.headersub {
+  text-align: left;
+  font-family: "Roboto Slab";
+  font-size: 3vw;
+  color: white;
+  margin-top: 0px;
+  margin-left: 3vw;
+}
+
+div.cta {
+  display: flex;
+  width: 75%;
+  text-align: center;
+  flex-flow: row nowrap;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
+  margin-bottom: 400px;
+}
+
+div.first {
+  order: 1;
+  flex-basis: 50%;
+}
+
+div.first h1 {
+ text-align: center;
+  font-size: 3vw;
+}
+
+div.first p {
+  font-family: "Roboto";
+  font-weight: lighter;
+  font-size: 2vw;
+}
+
+div.second {
+  order: 2;
+  flex-basis: 50%;
+  padding: 5%;
+
+}
+
+@media all and (max-width: 800px) {
+  div.cta {
+    flex-flow: column wrap;
+    align-content: space-between;
+  }
+  div.first {
+    flex-basis: 100%;
+  }
+  div.second {
+    flex-basis: 100%;
+  }
+  div.first h1 {
+    font-size: 5vw;
+  }
+
+  div.first p {
+    font-size: 3vw;
+  }
+}
+
+.hr {
+  width: 75vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.paraone{
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/artshop-b3081.appspot.com/o/test%2F50924366_648760872243355_4487342914162130944_n.png?alt=media&token=8eeab0a1-fb49-4d8f-a116-d1a437da6833");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+  height: 300px;
+  margin-top: 100px;
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.paratitle{
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 8vw;
+  color: white;
+  order: 1;
+}
+
+div.button {
+  order: 2;
+  align-self: center;
+}

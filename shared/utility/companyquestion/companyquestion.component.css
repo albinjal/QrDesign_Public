@@ -1,0 +1,25 @@
+
+#PrivBut {
+  background-color: palevioletred;
+  width: 140px;
+  float: left;
+  height: 70px;
+  margin: 10px;
+}
+
+#CompBut {
+  background-color: cornflowerblue;
+  width: 140px;
+  float: right;
+  height: 70px;
+  margin: 10px
+}
+
+h3 {
+  margin-top: 24px !important;
+  margin-left: 16px;
+}
+
+h3.fortext {
+  margin-left: 31px;
+}
