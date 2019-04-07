@@ -1,2 +1,2 @@
 # Artshop_Public
-View version of the artshop.se site source code
+View version of the qrdesign.se site source code
