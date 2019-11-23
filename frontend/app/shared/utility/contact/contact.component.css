@@ -1,0 +1,36 @@
+.wrapper {
+  height: 85vh;
+}
+.wrapper .header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+mat-form-field {
+  width: 250px;
+}
+
+textarea {
+  height: 130px;
+}
+
+button.close {
+  margin-left: 5rem;
+  margin-right: 0;
+}
+
+h2 {
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 20px;
+}
+
+p {
+  font-family: "Roboto";
+  font-weight: lighter;
+  font-size: 14px;
+}
+
+/*# sourceMappingURL=contact.component.css.map */

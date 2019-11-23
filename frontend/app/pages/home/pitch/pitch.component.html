@@ -1,0 +1,208 @@
+<div class="header demo" id="section04">
+  <div class="header_logo_box">
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/artshop-b3081.appspot.com/o/siteimages%2FLoggaUBW.png?alt=media&token=10ef12f7-bd7c-4808-8f24-1a663da25c65"
+      alt="QrDesign Logga" class="logo">
+  </div>
+  <div class="header_text_box">
+    <h1>Förenar stil och funktion</h1>
+  </div>
+  <a (click)="scroll(vad)" class="pad"><span></span></a>
+</div>
+
+<div class="content1" #vad>
+
+  <mat-horizontal-stepper>
+    <mat-step label="Idén">
+      <div class="slide1">
+        <h2 class="slide1_heading">Vad är QrDesign?</h2>
+        <div class="flex">
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/artshop-b3081.appspot.com/o/siteimages%2Fcanvas.png?alt=media&token=6d42f6a5-7c3d-499a-b078-0f2dd1c3ff77"
+            alt="" class="slide1_img">
+          <h3 class="slide1_body">QrDesign är smarta konstverk som kan användas för att dela WiFi smidigare än någonsin.
+            <br><br>
+            Tavlorna kan scannas av den inbyggda iPhone kamera appen, Google lens eller QR Scanner appar.
+          </h3>
+        </div>
+      </div>
+      <div class="slide_buttons">
+        <button mat-raised-button matStepperNext class="mat-step_button shadowfade">Hur?</button>
+      </div>
+    </mat-step>
+    <mat-step label="Steg 1">
+      <div class="slide2">
+        <h2 class="slide2_header">Hur?</h2>
+        <h3 class="slide2_body">Istället för länkar programmerar vi Qr-Koder med wifi-uppgifter.<br><br>
+          Koderna kan sedan scannas som en vanlig Qr-Kod med till exempel den inbyggda iPhone kamera appen.
+          <br><br>
+          Mobilen blir då direkt ansluten till nätverket. Inget namn, inget lösenord, inga problem.
+        </h3>
+        <div *ngIf=!isMobile class="slide2_content">
+          <div style="margin-left: 2rem">
+            <h3>WIFI-Namn</h3>
+            <h3>WIFI-Lösenord</h3>
+          </div>
+          <div class="arrow">
+          </div>
+          <img class="qr"
+               src="https://firebasestorage.googleapis.com/v0/b/artshop-b3081.appspot.com/o/siteimages%2Fqr.png?alt=media&token=9897ffeb-398e-4430-b7cb-547d37850479">
+        </div>
+      </div>
+      <div class="slide_buttons">
+
+        <button mat-raised-button matStepperPrevious class="mat-step_button">Tillbaka</button>
+        <button mat-raised-button matStepperNext class="mat-step_button">Nästa</button>
+      </div>
+    </mat-step>
+    <mat-step label="Steg 2">
+      <div class="slide3">
+        <h2 class="slide2_header">Hur?</h2>
+        <h3 class="slide3_body">Vi gömmer Qr-Koden i snygg design vilket gör den till den perfekta inredningen.</h3>
+        <div class="flex">
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/artshop-b3081.appspot.com/o/siteimages%2FWorld_instr.jpg?alt=media&token=479b4419-da0f-4009-86a2-8d578ef0bbdb"
+            alt="" class="slide3_img1">
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/artshop-b3081.appspot.com/o/siteimages%2FWorld_instr2.jpg?alt=media&token=966f37e8-3e44-46d4-9601-f8b077099a43"
+            alt="" class="slide3_img2">
+        </div>
+      </div>
+      <div class="slide_buttons">
+        <button mat-raised-button matStepperPrevious class="mat-step_button">Tillbaka</button>
+        <button mat-raised-button (click)="scroll(utforska);" class="mat-step_button">Utforska</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
+<div class="content2" #utforska>
+  <div *ngIf="!isMobile">
+    <h2 class="content2_header">Utforska</h2>
+    <mat-horizontal-stepper>
+      <mat-step>
+        <div class="slide1">
+
+
+          <div class="flex">
+            <div class="content2_media">
+              <video autoplay loop muted playsinline onloadedmetadata="this.muted=true" class="content2_media_video">
+                <source
+                  src="https://firebasestorage.googleapis.com/v0/b/artshop-b3081.appspot.com/o/siteimages%2FIphone_small.mp4?alt=media&token=785cabe7-06ed-4e1e-96d6-abb1474c3682"
+                  type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div>
+              <h3 class="content2_body">Det är lika enkelt som att ta en bild. Ta bara fram din iPhone kamera,
+                Google lens eller qr-scanner app, rikta telefonen mot motivet och klicka på anslut!</h3>
+              <div class="slide_buttons">
+                <button mat-raised-button matStepperNext class="mat-step_button test_btn">Testa själv</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </mat-step>
+      <mat-step label="Steg 1">
+        <div class="slide2">
+          <img class="ananas"
+               src="https://firebasestorage.googleapis.com/v0/b/artshop-b3081.appspot.com/o/siteimages%2Fannanas.jpg?alt=media&token=8ddabdb5-4530-480f-b340-b248fd70e69c">
+          <div class="text">
+            <h3>1. Öppna kameran eller qr-scanner.</h3>
+            <h3>2. Rikta kameran mot ananasen.</h3>
+            <h3>3. Klar! I ett verkligt scenario skulle du nu vara helt ansluten till WIFI.</h3>
+            <div class="slide_buttons">
+              <button mat-raised-button matStepperPrevious class="mat-step_button test_btn" style="margin-top: 2rem">
+                Tillbaka
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
+  <div *ngIf="isMobile">
+    <h2 class="content2_header">Utforska</h2>
+    <div class="flex">
+      <div class="content2_media">
+        <video autoplay loop muted playsinline onloadedmetadata="this.muted=true" class="content2_media_video">
+          <source src="https://firebasestorage.googleapis.com/v0/b/artshop-b3081.appspot.com/o/siteimages%2FIphone_small.mp4?alt=media&token=785cabe7-06ed-4e1e-96d6-abb1474c3682"
+            type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="content3">
+  <h2 class="content3_header">Varför QrDesign?</h2>
+  <div class="flex">
+
+    <div class="content3_box">
+      <div class="content3_box_second">
+        <h2 class="content3_box_second_heading">Modernt</h2>
+        <h3 class="content3_box_second_body">Ge dina gäster en minnesvärd och toppmodern upplevelse. Digitalisering är
+          bara förnamnet.
+        </h3>
+      </div>
+      <div class="content3_box_first">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/artshop-b3081.appspot.com/o/siteimages%2FGlasses.jpg?alt=media&token=1b7eddcf-cce8-4e59-812c-0ea0882d4c20"
+          alt="" class="content3_box_first_img">
+      </div>
+    </div>
+    <div class="content3_box">
+      <div class="content3_box_first">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/artshop-b3081.appspot.com/o/siteimages%2FBrain.jpg?alt=media&token=0aeb4a8d-17a5-40ff-b043-e66d38bf96be"
+          alt="" class="content3_box_first_img">
+      </div>
+      <div class="content3_box_second">
+        <h2 class="content3_box_second_heading">Smart</h2>
+        <h3 class="content3_box_second_body">Glöm den osmidiga lappen med wifi lösenordet och låt dina gäster ansluta
+          enklare än någonsin.</h3>
+      </div>
+    </div>
+    <div class="content3_box">
+      <div class="content3_box_first">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/artshop-b3081.appspot.com/o/siteimages%2FThumbsup.jpg?alt=media&token=6f39fab5-9508-4840-827f-4c9f75ffed97"
+          alt="" class="content3_box_first_img">
+      </div>
+      <div class="content3_box_second">
+        <h2 class="content3_box_second_heading">Enkelt</h2>
+        <h3 class="content3_box_second_body">Att scanna tavlorna är enkelt och kan till och med göras med den inbyggda
+          iPhone kamera appen.
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="content4">
+  <h2 class="content4_header">Våra Motiv</h2>
+  <h3 class="content4_body">Vår design har få begränsningar vilket gör våra tavlor mer än bara smarta.
+    Vi erbjuder motiv för alla tillfällen, från hotellobbyn till sovrummet.
+    Fortfarande inte övertygad? Vi designar även nya motiv på beställning. </h3>
+  <div class="storebox">
+    <a [routerLink]="['/butik/produkter/canvas']">
+      <div class="content4_lead canvas">
+        <button mat-raised-button class="content4_lead_button" [routerLink]="['/butik/produkter/canvas']">Till Canvas
+        </button>
+      </div>
+    </a>
+    <a [routerLink]="['/butik/produkter/poster']">
+      <div class="content4_lead poster">
+        <button mat-raised-button class="content4_lead_button" [routerLink]="['/butik/produkter/poster']">Till Poster
+        </button>
+      </div>
+    </a>
+  </div>
+
+
+</div>
+

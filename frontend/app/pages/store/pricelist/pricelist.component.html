@@ -1,0 +1,34 @@
+<div>
+  <h3>Prisinfo för <b>{{product.name}}</b></h3>
+  <p>Moms</p>
+  <mat-slide-toggle (change)="moms = $event.checked; globs.Moms = moms" matTooltip="Moms" [checked]="moms"></mat-slide-toggle>
+  <mat-dialog-content>
+    <h3>Canvas</h3>
+    <table mat-table [dataSource]="canvasdata">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Dimension</th>
+        <td mat-cell *matCellDef="let dim"> {{dim.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="nomomsprice">
+        <th mat-header-cell *matHeaderCellDef> Pris</th>
+        <td mat-cell *matCellDef="let dim"> {{dim.price * 0.01 * globs.appliedMoms | round}}kr</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+    </table>
+    <br>
+    <h3>Poster</h3>
+    <table mat-table [dataSource]="posterdata">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Dimension</th>
+        <td mat-cell *matCellDef="let dim"> {{dim.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="nomomsprice">
+        <th mat-header-cell *matHeaderCellDef> Pris</th>
+        <td mat-cell *matCellDef="let dim"> {{dim.price * 0.01 * globs.appliedMoms | round}}kr</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+    </table>
+  </mat-dialog-content>
+</div>

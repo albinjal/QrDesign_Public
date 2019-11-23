@@ -1,0 +1,60 @@
+h2{
+  font-size: 2rem;
+}
+
+qrcode {
+  max-width: 10rem;
+  width: 1.2rem;
+  margin-right: 1.5rem;
+}
+mat-card-header{
+  padding-bottom: 1rem;
+}
+.content{
+  width: 90%;
+  margin: auto;
+  padding-top: 2rem;
+  .container{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: space-around;
+    margin-bottom: 5rem;
+    button{
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+    .squarebox {
+      width: 20rem;
+      margin: 1rem;
+      border-radius: 2rem;
+    }
+  }
+}
+
+
+.box{
+  margin: 1rem;
+  max-width: 80vw;
+}
+
+.sum {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+
+  .sumc{
+    display: flex;
+    justify-content: center;
+  }
+}
+.lastcard{
+  border-radius: 0 0 2rem 2rem;
+  padding: 2rem 1rem;
+}
+.last{
+  font-size: 1.2rem;
+}
+.latest{
+  font-size: .8rem;
+}

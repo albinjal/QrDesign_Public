@@ -1,0 +1,53 @@
+@import '~src/variables';
+
+
+.header {
+  margin-top: -56px;
+  height: 30vh;
+  background-image:
+    linear-gradient(to right bottom, $color-headerFade-bright, $color-headerFade-dark),
+    url("https://firebasestorage.googleapis.com/v0/b/artshop-b3081.appspot.com/o/siteimages%2FHome.jpg?alt=media&token=973b0264-5b73-40bf-8b30-4242acc32003");
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  .header_text_box {
+    animation-name: moveInTop;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    color: $color-white;
+    width: 75vw;
+  }
+}
+
+.content1{
+  margin-top: 2rem;
+  width: 50vw;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  .content1_body{
+    margin-top: 2rem;
+  }
+}
+
+.content2{
+  margin-top: 10rem;
+  width: 50vw;
+  margin-left: auto;
+  margin-right: auto;
+  .content2_heading{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  .content2_list{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: lighter;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+  }
+}

@@ -1,0 +1,221 @@
+
+
+<div class="content1">
+  <div class="content1_product_holder">
+    <div class="mobile">
+      <h3 class="content1_product_holder_heading">{{product.name}}</h3>
+      <mat-progress-spinner mode="indeterminate" *ngIf="!imgload"></mat-progress-spinner>
+      <img *ngIf="img" mat-card-image [src]="img" (load)="this.imgload = true" class="content1_product_holder_img">
+    </div>
+    <mat-card *ngIf="!isMobile" style="border-radius: 2rem">
+      <div  class="content1_price">
+        <div class="content1_price_header">
+          <div class="content1_price_header_flex">
+            <h3>Pris</h3>
+            <button mat-icon-button matTooltip="Prislista" (click)="showPricing(product)" color="primary">
+                <mat-icon>info</mat-icon>
+            </button>
+          </div>
+          <div class="content1_price_header_flex">
+            <p>Moms</p>
+            <mat-slide-toggle (change)="globs.Moms = $event.checked" matTooltip="Moms" [checked]="globs.Moms"></mat-slide-toggle>
+          </div>
+        </div>
+            <table style="width:200px">
+              <tr>
+                <td>Grundpris</td>
+                <td>{{(currentprice * 0.01 * globs.appliedMoms) | round}}kr</td>
+              </tr>
+              <tr>
+                <td>Antal</td>
+
+                <td>{{stepsArray?.get([3]).value['quantity']}}</td>
+              </tr>
+              <!--<tr>
+                <td>Mängdrabatt</td>
+                <td>{{(1 - amountDiscount) * 100}}%</td>
+                <td><app-info-button [title]="'Mängdrabatt'" [text]="'Här ser du aktuell mängdrabatt. Du får XX% i rabatt/tavla'" [tooltip]=""></app-info-button></td>
+              </tr> -->
+              <td><b>Totalt </b></td>
+              <td><b>{{((currentprice * 0.01 * globs.appliedMoms ) | round ) * amountDiscount * currentDiscount * stepsArray?.get([3]).value['quantity']}}kr</b></td>
+            </table>
+      </div>
+    </mat-card>
+  </div>
+
+
+
+  <div class="content1_form">
+    <form [formGroup]="orderForm" (ngSubmit)="addToCart(stepsArray.value)">
+      <mat-vertical-stepper linear="false" formArrayName="stepsArray">
+
+        <mat-step formGroupName="0" [stepControl]="stepsArray?.get([0])" errorMessage="QR-Kod ej vald">
+          <div class="content1_form_flex">
+          <ng-template matStepLabel>Välj QR-Kod</ng-template>
+          <div>
+            <app-info-button [title]="'Typ av QR-kod'" [text]="'<p>Här väljer du vilken typ av QR-kod du vill ha eller om du vill välja koden senare.</p>'" [tooltip]=""></app-info-button>
+            <mat-form-field>
+              <mat-label>QR Typ</mat-label>
+              <mat-select formControlName="qrtype">
+                <mat-option value="0">WiFi-Inloggning</mat-option>
+                <mat-option value="1">Länk till hemsida</mat-option>
+                <mat-option value="10">Ange senare</mat-option>
+              </mat-select>
+            </mat-form-field>
+          <div [ngSwitch]="stepsArray?.get([0]).value['qrtype']">
+            <div *ngSwitchCase="0">
+              <form formGroupName="form">
+                <app-info-button [title]="'Nätverkstyp'" [text]="'<p>Här anges om ditt nätverk är öppet eller lösenordsskyddat.</p>'" [tooltip]=""></app-info-button>
+                <mat-form-field >
+                  <mat-label>Nätverkets typ</mat-label>
+                  <mat-select formControlName="NetType">
+                    <mat-option value="WPA">WPA / WPA2</mat-option>
+                    <!-- <mat-option value="WEP">WEP</mat-option> -->
+                    <mat-option value="nopass">Öpppet Nätverk</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <br>
+                <app-info-button [title]="'SSID'" [text]="'<p>Här skriver du in namnet på ditt nätverk.</p>'" [tooltip]=""></app-info-button>
+
+                <mat-form-field>
+                  <mat-label>Nätverkets namn (SSID)</mat-label>
+                  <input matInput formControlName="SSID" placeholder="Guest Wifi">
+                  <mat-error>
+                    Du måste ange ett Nätverksnamn
+                  </mat-error>
+                </mat-form-field>
+                <div *ngIf="pass">
+                <br>
+                <app-info-button [title]="'Lösenord'" [text]="'<p>Här skriver du in lösenordet till ditt nätverk.</p>'" [tooltip]=""></app-info-button>
+                <mat-form-field>
+                  <mat-label>Nätverkets lösenord</mat-label>
+                  <input matInput formControlName="Pass">
+                </mat-form-field>
+                </div>
+              </form>
+            </div>
+            <div *ngSwitchCase="1">
+              <form formGroupName="form">
+                <app-info-button [title]="'Länk'" [text]="'<p>Här kan du lägga in en länk till valfri hemsida.</p>'" [tooltip]=""></app-info-button>
+                <mat-form-field>
+                  <mat-label>Länk</mat-label>
+                  <input matInput formControlName="URL" placeholder="https://qrdesign.se">
+                </mat-form-field>
+              </form>
+            </div>
+            <div *ngSwitchCase="10" class="content1_form_flex_choose_later">
+              <p>Du kommer efter beställning få ett mail med info om hur du slutför ordern.</p>
+              <br>
+              <p>Detta alternativ finns för dem som vill ge en Qr-tavla i present eller som behöver kolla upp sina WiFi uppgifter.</p>
+            </div>
+          </div>
+          </div>
+            <div *ngIf="!pickLater" class="content1_form_flex_qrcode_box">
+
+              <div *ngIf="!isMobile">
+                <mat-divider></mat-divider>
+                <p style="margin-top: 10px"><app-info-button title="Livetest av QR-Kod" [text]="'<p>Här kan du efter att du angett dina uppgifter testa QR-Koden vi kommer trycka.</p>' +
+               '<p>Om denna funkar kan</p>'">
+                </app-info-button>Livetest av QR-Kod:</p>
+
+                <div class="content1_form_flex_qrcode_box_qrcode">
+                  <qrcode [qrdata]="qrData" [usesvg]=false [size]="256" [level]="'H'" [allowEmptyString]="true" [hidetitle]="true"></qrcode>
+                </div>
+                <mat-divider></mat-divider>
+              </div>
+              <br>
+             <button mat-raised-button type="button" style="background-color: #F08213" (click)=" stepsArray.get([0]).patchValue({qrtype: '10'})" class="content1_form_flex_qrcode_box_buton">Jag bestämmer QR-Kod senare</button>
+            </div>
+          </div>
+          <button mat-flat-button type="button" color="primary" matStepperNext>Nästa</button>
+        </mat-step>
+
+
+        <mat-step formGroupName="1" [stepControl]="stepsArray?.get([1])" errorMessage="Färg ej vald">
+          <ng-template matStepLabel>Välj Färg</ng-template>
+          <mat-form-field>
+            <mat-label>Färg</mat-label>
+            <mat-select formControlName="color">
+              <mat-option *ngFor="let color of product.colorarray" [value]="product.colors[color]['savedas']">{{product.colors[color]['name']}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <button mat-raised-button type="button" color="primary" matStepperNext class="step_button">Nästa</button>
+        </mat-step>
+        <br>
+        <mat-step formGroupName="2" [stepControl]="stepsArray?.get([2])" errorMessage="Storlek ej vald">
+          <ng-template matStepLabel>Välj Typ och Storlek</ng-template>
+          <mat-form-field>
+            <mat-label>Typ</mat-label>
+            <mat-select formControlName="type">
+              <mat-option *ngFor="let type of product.typearray" [value]="product.types[type]['savedas']">{{product.types[type]['name']}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Storlek</mat-label>
+            <mat-select formControlName="size" disableOptionCentering="true" #matSelect>
+              <mat-option *ngFor="let size of selectedtypearr" [value]="selectedtype[size]['savedas']">
+                {{selectedtype[size]['name']}}<span *ngIf="matSelect.panelOpen" style="float: right">{{selectedtype[size]['price'] * globs.appliedMoms * 0.01 | round}}:-</span>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <button mat-raised-button type="button" color="primary" matStepperNext class="step_button">Nästa</button>
+        </mat-step>
+        <mat-step formGroupName="3" [stepControl]="stepsArray?.get([3])">
+          <ng-template matStepLabel>Slutför</ng-template>
+          <mat-form-field>
+            <mat-label>Antal</mat-label>
+            <input matInput type="number" min="1" name="quantity" max="1000" formControlName="quantity">
+          </mat-form-field>
+          <br>
+          <button [disabled]="orderForm.invalid" type="submit" color="primary" mat-raised-button class="step_button">Lägg till i min Kundvagn
+          </button>
+        </mat-step>
+      </mat-vertical-stepper>
+    </form>
+  </div>
+  <div *ngIf="isMobile" class="content1_price">
+    <div class="content1_price_header">
+      <div class="content1_price_header_flex">
+        <h3>Pris</h3>
+        <button mat-icon-button matTooltip="Prislista" (click)="showPricing(product)" color="primary">
+          <mat-icon>info</mat-icon>
+        </button>
+      </div>
+      <div class="content1_price_header_flex">
+        <p>Moms</p>
+        <mat-slide-toggle (change)="globs.Moms = $event.checked" matTooltip="Moms" [checked]="globs.Moms"></mat-slide-toggle>
+      </div>
+    </div>
+    <table style="width:200px">
+      <tr>
+        <td>Grundpris</td>
+        <td>{{(currentprice * 0.01 * globs.appliedMoms) | round}}kr</td>
+      </tr>
+      <tr>
+        <td>Antal</td>
+
+        <td>{{stepsArray?.get([3]).value['quantity']}}</td>
+      </tr>
+      <!--<tr>
+        <td>Mängdrabatt</td>
+        <td>{{(1 - amountDiscount) * 100}}%</td>
+        <td><app-info-button [title]="'Mängdrabatt'" [text]="'Här ser du aktuell mängdrabatt. Du får XX% i rabatt/tavla'" [tooltip]=""></app-info-button></td>
+      </tr> -->
+      <td><b>Totalt </b></td>
+      <td><b>{{((currentprice * 0.01 * globs.appliedMoms ) | round ) * amountDiscount * currentDiscount * stepsArray?.get([3]).value['quantity']}}kr</b></td>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+

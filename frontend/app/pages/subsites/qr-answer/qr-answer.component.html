@@ -1,0 +1,28 @@
+<div *ngIf="orderData">
+  <h2>Välkommen {{orderData.firstName}} {{orderData.lastName}}</h2>
+  <p>Här kan du slutföra din beställning</p>
+  <mat-card>
+    <div class="container">
+
+      <mat-card *ngFor="let item of orderData.orders" class="squarebox" style="width: 250px">
+        <mat-card-header>
+          <mat-card-title><h4>{{item.prodname}}</h4></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <img mat-card-image [src]="item.prodimg">
+          <p>Typ: {{item.type}}</p>
+          <p>Storlek: {{item.size}}</p>
+          <p>Antal: {{item.quantity}}st</p>
+          <p>QR-Kod</p>
+          <qrcode *ngIf="!item.pickLater" [qrdata]="item.qr_code" [size]="128" [level]="'H'"></qrcode>
+          <div *ngIf="item.pickLater">
+            <mat-icon color="warn">arrow_forward</mat-icon>
+            <button mat-raised-button color="primary">Välj Nu</button>
+            <mat-icon color="warn">arrow_back</mat-icon>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-card>
+</div>
+<mat-progress-bar mode="indeterminate" *ngIf="!orderData"></mat-progress-bar>

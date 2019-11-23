@@ -1,0 +1,59 @@
+<div class="wrapper">
+  <div class="header">
+    <h2>Kontakt</h2>
+    <button *ngIf="isMobile | async" class="close" (click)="close()" mat-raised-button color="warn">Stäng</button>
+  </div>
+  <p>Tveka inte att kontakt oss om det finns några som helst oklarheter
+    eller om du söker något utanför standardsortimentet!</p>
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Via Mail">
+    <br>
+    <form [formGroup]="mailform" (ngSubmit)="submail(mailform)">
+      <mat-form-field>
+        <mat-label>Din Mailadress</mat-label>
+        <input matInput type="email" [formControl]="mailform.controls['adress']">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Ämne</mat-label>
+        <input matInput [formControl]="mailform.controls['subject']">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Meddelande</mat-label>
+        <textarea matInput placeholder="Skriv här" [formControl]="mailform.controls['body']"></textarea>
+      </mat-form-field>
+      <br>
+      <button type="submit" mat-raised-button color="primary" [disabled]="mailform.invalid">Skicka</button>
+    </form>
+  </mat-tab>
+  <mat-tab label="Via Telefon">
+    <br>
+    <form [formGroup]="telform" (ngSubmit)="subphone(telform)">
+      <mat-form-field>
+        <mat-label>Ämne</mat-label>
+        <input matInput [formControl]="telform.controls['subject']">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Ditt Namn</mat-label>
+        <input matInput type="text" [formControl]="telform.controls['name']">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Ditt telefonnummer</mat-label>
+        <input matInput type="tel" [formControl]="telform.controls['tel']">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Ring gärna mellan:</mat-label>
+        <input matInput type="text" [formControl]="telform.controls['times']">
+      </mat-form-field>
+      <br>
+      <button mat-raised-button type="submit" color="primary" [disabled]="telform.invalid">Skicka</button>
+    </form>
+
+  </mat-tab>
+</mat-tab-group>
+
+</div>

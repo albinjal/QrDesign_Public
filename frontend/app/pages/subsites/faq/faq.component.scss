@@ -1,0 +1,52 @@
+@import '~src/variables';
+
+.header {
+  transform: translateY(-70px);
+  height: 30vh;
+  background-image:
+    linear-gradient(to right bottom, $color-headerFade-bright, $color-headerFade-dark),
+    url("https://firebasestorage.googleapis.com/v0/b/artshop-b3081.appspot.com/o/siteimages%2FHome.jpg?alt=media&token=973b0264-5b73-40bf-8b30-4242acc32003");
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  .header_text_box {
+    animation-name: moveInTop;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    color: $color-white;
+    width: 75vw;
+  }
+}
+
+
+
+div.body {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.cards {
+  max-width: 400px;
+  height: fit-content;
+  padding: 2rem;
+  border-radius: 20px;
+  margin: 2rem;
+  .heading{
+    font-weight: bold;
+    color: #F08213;
+  }
+}
+
+mat-card-content {
+  line-height: 1.5rem;
+}
