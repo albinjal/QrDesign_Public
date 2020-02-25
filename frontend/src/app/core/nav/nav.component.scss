@@ -1,0 +1,59 @@
+@import '~src/variables';
+
+@media all and (min-width: 1401px) {
+  mat-icon {
+    size: auto;
+  }
+
+  mat-toolbar {
+    background-color: rgba(255, 255, 255, 0.9);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+
+    .logo {
+      width: 12vw;
+      margin-right: 1rem;
+    }
+  }
+}
+@media all and (min-width: 601px) and (max-width: 1400px) {
+  mat-icon {
+    size: auto;
+  }
+
+  mat-toolbar {
+    background-color: rgba(255, 255, 255, 0.9);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+
+    .logo {
+      width: 20vw;
+      margin-right: 1rem;
+    }
+  }
+}
+
+@media all and (max-width: 600px) {
+  mat-icon {
+    size: auto;
+  }
+
+  mat-toolbar {
+    background-color: rgba(255, 255, 255, 0.9);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+
+    .logo {
+      width: 35vw;
+      margin-right: 1rem;
+    }
+  }
+}
+
+

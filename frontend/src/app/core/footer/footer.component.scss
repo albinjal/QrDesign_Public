@@ -1,0 +1,164 @@
+@import '~src/variables';
+@media all and (min-width: 601px) {
+  h2 {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: lighter;
+    font-size: 1.3rem;
+  }
+
+  h3 {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: lighter;
+    font-size: 1rem;
+  }
+
+
+  .footer {
+    margin-top: 10rem;
+
+    .content1 {
+      margin-top: 5rem;
+      padding: 0 10%;
+      width: 50vw;
+      .content1_logo {
+        width: 15vw;
+
+      }
+    }
+
+    .content2 {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-evenly;
+      min-height: 300px;
+      margin-top: 2rem;
+      background-image:
+        linear-gradient(to bottom, $color-light-green, $color-dark-green),
+        url("https://firebasestorage.googleapis.com/v0/b/artshop-b3081.appspot.com/o/siteimages%2FForest.jpg?alt=media&token=7dea43a3-4366-4a5c-806b-ff7c0575ee99");
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+      padding: 7rem 10%;
+      color: $color-white;
+      .links{
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-evenly;
+        line-height: 2.2rem;
+        a{
+          width: fit-content;
+        }
+      }
+      .contact{
+        text-align: center;
+        .content2_heading{
+          margin-bottom: 1rem;
+          font-weight: normal;
+        }
+      }
+    }
+    a{
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .content3 {
+      margin: 2rem 0;
+      text-align: center;
+      padding: 0 10%;
+
+      .content3_social {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-evenly;
+
+        .content3_social_img {
+          height: 5vw;
+          margin: 3rem 0;
+        }
+      }
+    }
+  }
+}
+@media all and (max-width: 600px) {
+  h2 {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: lighter;
+    font-size: 1rem;
+  }
+
+  h3 {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: lighter;
+    font-size: 1rem;
+  }
+
+
+  .footer {
+    margin-top: 5rem;
+
+    .content1 {
+      margin-top: 2rem;
+      padding: 0 10%;
+
+      .content1_logo {
+        width: 60%;
+      }
+    }
+
+    .content2 {
+      margin-top: 2rem;
+      background-image:
+        linear-gradient(to bottom, $color-light-green, $color-dark-green),
+        url("https://firebasestorage.googleapis.com/v0/b/artshop-b3081.appspot.com/o/siteimages%2FForest.jpg?alt=media&token=7dea43a3-4366-4a5c-806b-ff7c0575ee99");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      padding: 2rem 15%;
+      color: $color-white;
+      .links{
+        float: left;
+        width: 50%;
+        line-height: 3rem;
+        margin: 5rem 0;
+        text-align: center;
+        a{
+          width: fit-content;
+        }
+      }
+      .contact {
+        margin-top: 5rem;
+        text-align: center;
+        p{font-size: 1.1rem};
+
+        .content2_heading {
+          margin-top: 2rem;
+          margin-bottom: 1rem;
+          font-weight: normal;
+        }
+      }
+    }
+    a{
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .content3 {
+      margin: 2rem 0;
+      text-align: center;
+      padding: 0 10%;
+
+      .content3_social {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-evenly;
+
+        .content3_social_img {
+          height: 15vw;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+}

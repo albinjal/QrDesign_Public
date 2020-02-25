@@ -1,0 +1,22 @@
+::ng-deep .mat-snack-bar-container {
+  margin: 15px;
+  max-width: 80vw;
+}
+b {
+  font-size: medium;
+}
+p {
+  font-size: x-small;
+  max-width: calc(100% - 50px);
+}
+
+button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 99%;
+}
+
+a {
+  color: white;
+}

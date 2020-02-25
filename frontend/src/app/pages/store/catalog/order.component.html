@@ -1,0 +1,37 @@
+<div class="header">
+  <div class="header_text_box">
+    <h1>Butik</h1>
+  </div>
+</div>
+<form [formGroup]="sortForm">
+<div class="storecontent1">
+
+  <mat-form-field class="field">
+    <mat-select formControlName="type">
+      <mat-option value="canvas">Canvas</mat-option>
+      <mat-option value="poster">Poster</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="field">
+    <input matInput placeholder="Filtrera" formControlName="nameFilter" autocomplete="off">
+  </mat-form-field>
+
+  <mat-form-field class="field">
+    <mat-label>Sortera</mat-label>
+    <mat-select formControlName="sorting">
+      <mat-option  value="popularity"> Popularitet
+
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+</form>
+<div class="storecontent2">
+  <div class="product" *ngFor="let product of currentlyShowing | prodfilter: sortForm.value"
+       [ngStyle]="{'background-image': 'URL('+product.imgpath+')'}"
+       [routerLink]="['/butik/produkt-detaljer/' + product.id + '/' + sortForm.value.type]">
+    <h4>{{product.name}}</h4>
+  </div>
+</div>

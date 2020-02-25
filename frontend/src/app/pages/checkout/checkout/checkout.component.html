@@ -1,0 +1,124 @@
+<mat-progress-bar *ngIf="!user" mode="indeterminate"></mat-progress-bar>
+<div class="content" *ngIf="user">
+  <h3>Varukorg</h3>
+  <div class="container">
+
+    <mat-card *ngFor="let item of user.cart" class="squarebox">
+      <mat-card-header>
+        <mat-card-title><p>{{item.prodname}} {{item.viewdim}}</p></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <img mat-card-image [src]="item.prodimg">
+        <p style="text-align: center">{{item.type | titlecase}} {{item.quantity}} • {{item.prodprice * 0.01 * globs.appliedMoms | round}}:-</p>
+
+      </mat-card-content>
+      <button mat-raised-button (click)="remove(item)" color="warn">Ta bort</button>
+    </mat-card>
+
+    <div class="box">
+      <mat-card style="border-radius: 2rem 2rem 0 0">
+
+        <mat-card-content>
+          <form [formGroup]="dCode" (submit)="checkCode(dCode.value.code)">
+            <mat-form-field>
+              <input matInput formControlName="code" placeholder="Rabattkod" [disabled]="waitingForCode">
+            </mat-form-field>
+            <button mat-raised-button type="submit" style="margin-left: 3rem"
+                    [disabled]="waitingForCode || dCode.value.code === lastCode">Aktivera
+            </button>
+            <p *ngIf="discountCode">{{(1 - currentDiscount) * 100 | round}}% rabatt aktiverad!</p>
+            <mat-progress-bar mode="indeterminate" *ngIf="waitingForCode"></mat-progress-bar>
+          </form>
+
+
+        </mat-card-content>
+      </mat-card>
+
+
+      <mat-card class="sum">
+        <mat-card-header>
+          <mat-card-title>
+            Sammanställning
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="sumc">
+          <table style="width:50%" *ngIf="globs.Moms">
+            <tr>
+              <td>Produkter</td>
+              <td>{{user.totalmomsprice | round}}kr</td>
+            </tr>
+            <tr *ngIf="discountCode">
+              <td>Rabatt</td>
+              <td>{{(currentDiscount - 1) * user.totalmomsprice | round}}kr</td>
+            </tr>
+            <tr>
+              <td>Frakt</td>
+              <td>{{(delivery * globs.momsSats) | round}}kr</td>
+            </tr>
+
+            <tr>
+              <td><b>Totalt</b></td>
+              <td><b>{{(user.totalmomsprice * currentDiscount + delivery * globs.momsSats) | round}}kr</b></td>
+            </tr>
+            <tr>
+              <td>Varav moms</td>
+              <td>{{(user.totalmoms * currentDiscount + delivery * (globs.momsSats - 1.0))| round}}kr</td>
+            </tr>
+          </table>
+          <table style="width:50%" *ngIf="!globs.Moms">
+            <tr>
+              <td>Produkter</td>
+              <td>{{user.nomomsprice | round}}kr</td>
+            </tr>
+            <tr *ngIf="discountCode">
+              <td>Rabatt</td>
+              <td>{{(currentDiscount - 1) * user.nomomsprice | round}}kr</td>
+            </tr>
+            <tr>
+              <td>Frakt</td>
+              <td>{{delivery | round}}kr</td>
+            </tr>
+            <tr>
+              <td><b>Totalt</b></td>
+              <td><b>{{(user.nomomsprice * currentDiscount + delivery) | round}}kr</b></td>
+            </tr>
+            <tr>
+              <td>Moms</td>
+              <td>{{(user.totalmoms * currentDiscount + delivery * (globs.momsSats - 1.0))| round}}kr</td>
+            </tr>
+          </table>
+          <div style="margin-left: 50%; transform: translateX(-100%);">
+            <p>Moms</p>
+            <mat-slide-toggle (change)="globs.Moms = $event.checked" matTooltip="Moms"
+                              [checked]="globs.Moms"></mat-slide-toggle>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="lastcard">
+        <mat-card-title>
+          <p class="last">En sista sak:</p>
+        </mat-card-title>
+        <mat-card-subtitle>
+
+          <p class="latest">Våra produkter produceras på beställning och är helt kundanpassade. Därför gäller inte ångerrätten. <a routerLink="/info/legalt">Läs mer</a></p>
+          <p class="latest">Efter att du lagt din order tar det ca. 3-6 dagar för den att komma till dig.</p>
+        </mat-card-subtitle>
+      </mat-card>
+    </div>
+  </div>
+
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Betalning med Klarna
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+      <div id="my-checkout-container"></div>
+    </mat-card-content>
+  </mat-card>
+
+</div>

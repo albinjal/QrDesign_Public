@@ -1,0 +1,26 @@
+<div class="header">
+  <div class="header_text_box">
+    <h1>FAQ</h1>
+  </div>
+</div>
+
+
+<div class="body">
+  <div class="content1">
+    <h2>Frågor?</h2>
+    <h3 class="content1_body">Här har vi samlat svar på frågor vi tror kan hjälpa dig.</h3>
+  </div>
+  <mat-card class="cards" *ngFor="let question of (faq$ | async)?.questions">
+    <mat-card-title>
+      <h3 class="heading">{{question.question}}</h3>
+    </mat-card-title>
+    <mat-card-content [innerHTML]="question.answer">
+    </mat-card-content>
+    <mat-card-footer>
+      <p style="margin: 0 0 1rem 1rem">Hjälpte svaret?</p>
+      <button mat-flat-button>Ja</button>
+      <button mat-flat-button>Nej</button>
+    </mat-card-footer>
+  </mat-card>
+
+</div>

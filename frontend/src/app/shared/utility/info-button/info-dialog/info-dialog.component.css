@@ -1,0 +1,16 @@
+.wrapper {
+  width: 30vw;
+  min-width: 15rem;
+  max-width: 90vw;
+  padding: 0rem;
+}
+.wrapper .button {
+  float: right;
+}
+.wrapper .body {
+  padding: 2rem;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+}
+
+/*# sourceMappingURL=info-dialog.component.css.map */

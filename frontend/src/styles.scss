@@ -1,0 +1,113 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~fullpage.js/dist/fullpage.min.css';
+
+*,
+*::after,
+*::before{
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+.italic{
+  font-style: italic;
+}
+@media all and (min-width: 601px) {
+  html {
+    position: relative;
+    min-height: 100%;
+    font-size: 100%;
+  }
+
+  body {
+    min-height: 100%;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: bolder;
+    font-size: 5rem;
+  }
+
+  h2 {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: bold;
+    font-size: 2.7rem;
+  }
+
+  h3 {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: lighter;
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  p{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: lighter;
+    font-size: 1.2rem;
+  }
+}
+@media all and (max-width: 600px) {
+  html {
+    position: relative;
+    min-height: 100%;
+    font-size: 100%;
+  }
+
+  body {
+    min-height: 100%;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: bolder;
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: lighter;
+    font-size: 1.2rem;
+  }
+  p{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: lighter;
+    font-size: .8rem;
+  }
+}
+span.pusher {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+div.mat-tab-body-content {
+  height: fit-content;
+}
+
+.mat-simple-snackbar {
+  max-height: fit-content;
+}
+
+.fp-controlArrow {
+  padding: 0 1%;
+}
+
+@keyframes moveInTop{
+  0%{
+    opacity: 0;
+    transform: translate(-50%, -100%);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(-50%, -50%);
+
+  }
+}

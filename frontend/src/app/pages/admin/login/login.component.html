@@ -1,0 +1,17 @@
+<div>
+  <mat-card>
+  <form [formGroup]="loginForm" (submit)="submit()">
+    <mat-form-field>
+      <mat-label>Användarnamn</mat-label>
+      <input matInput type="text" formControlName="username">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Lösenord</mat-label>
+      <input matInput type="password" formControlName="password">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Logga in</button> <!--<button (click)="verify()">verify</button> -->
+  </form>
+  </mat-card>
+</div>

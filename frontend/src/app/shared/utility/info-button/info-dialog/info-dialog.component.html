@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <h2 mat-dialog-title>
+    <b>{{data.title}}</b><span class="pusher"></span>
+    <button mat-raised-button color="warn" mat-dialog-close class="button">
+      <mat-icon>close</mat-icon>
+      Stäng
+    </button>
+  </h2>
+  <div mat-dialog-content [innerHTML]="data.text" class="body">
+  </div>
+  <div mat-dialog-actions>
+    <button mat-flat-button mat-dialog-close routerLink="/info/Vanliga_Frågor">Till FAQ</button>
+    <span class="pusher"></span>
+    <a href="mailto:kontakt@qrdesign.se"><button mat-flat-button mat-dialog-close>Fråga om hjälp</button></a>
+  </div>
+</div>

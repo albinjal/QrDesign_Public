@@ -1,0 +1,69 @@
+<div>
+  <mat-card>
+    <mat-card-title>Ny produkt</mat-card-title>
+    <form [formGroup]="newProdForm" (submit)="submit()">
+      <mat-form-field>
+        <mat-label>Product ID</mat-label>
+        <input matInput formControlName="id" placeholder="space">
+      </mat-form-field>
+      <p>ID används intern i sökvägar osv men också för produkterna url, undvik helst mellanslag och å ä ö</p>
+      <mat-form-field>
+        <mat-label>Produktnamn</mat-label>
+        <input matInput formControlName="name" placeholder="Rymden">
+      </mat-form-field>
+      <p>Visningsnamnet dvs det kunden kommer i kontakt med.</p>
+        <mat-checkbox formControlName="visable">Visas</mat-checkbox>
+      <p>Om visas är av nås endast produkten via dess url, används t.ex. för motiv till företag.</p>
+      <mat-form-field>
+        <mat-label>Favoritfärg</mat-label>
+        <input matInput formControlName="favorite_color" placeholder="black">
+      </mat-form-field>
+      <p>Favoritfärgen är den som visas som standard. MÅSTE!!! vara samma som ett "Color ID". Pallar inte skriva validation för detta.</p>
+      <mat-form-field>
+        <mat-label>Popularitet</mat-label>
+        <input matInput type="number" formControlName="popularity">
+      </mat-form-field>
+      <p>Heltal typ 1-5 på hur högt upp produkten ska visas i flödet, kan finjusteras i databasen sen</p>
+      <br>
+      <br>
+      <div>
+        <mat-card>
+        <mat-card-title>Färger/Varianter</mat-card-title>
+        <br>
+        <br>
+        <div *ngFor="let color of colors.controls">
+          <mat-card>
+            <mat-card-title>{{color.get('col_id').value}}</mat-card-title>
+        <form [formGroup]="color">
+        <mat-form-field>
+          <mat-label>Color ID</mat-label>
+          <input matInput formControlName="col_id" placeholder="blue">
+        </mat-form-field>
+          <br>
+        <mat-form-field>
+          <mat-label>Färgens Visningsnamn</mat-label>
+          <input matInput formControlName="col_name" placeholder="Blå">
+        </mat-form-field>
+          <div *ngIf="!color.get('col_id').invalid && !newProdForm.get('id').invalid">
+          <p>Drop {{color.value['col_id']}} CANVAS image below. Format jpg/jpeg. Note: always add field product
+            id and color id before uploading since they are used for file path.</p>
+          <app-file-upload uploadPath="products/{{newProdForm.value['id']}}/Canvas/{{color.value['col_id']}}_{{date}}.jpg"
+                           (downloadURL)="color.get('canvas_img_url').setValue($event)"></app-file-upload>
+          <br>
+          <p>Drop {{color.value['col_id']}} POSTER image below. Format jpg/jpeg. Note: always add field product
+            id and color id before uploading since they are used for file path..</p>
+          <app-file-upload uploadPath="products/{{newProdForm.value['id']}}/Poster/{{color.value['col_id']}}_{{date}}.jpg"
+                           (downloadURL)="color.get('poster_img_url').setValue($event)" ></app-file-upload>
+          </div>
+        </form>
+          </mat-card>
+          <br>
+        </div>
+          <button mat-raised-button (click)="addColor()" color="primary" type="button">Ny färg</button>
+        </mat-card>
+      </div>
+      <br>
+      <button mat-raised-button [disabled]="newProdForm.invalid" type="submit" color="warn">Skapa Produkt</button>
+    </form>
+  </mat-card>
+</div>
